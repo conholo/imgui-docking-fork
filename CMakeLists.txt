@@ -16,9 +16,11 @@ add_library(imgui STATIC
 )
 
 # Set include directories
-target_include_directories(imgui PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
-        ${CMAKE_CURRENT_SOURCE_DIR}/backends
+target_include_directories(imgui
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/backends>
+        $<INSTALL_INTERFACE:include>
 )
 
 # Vulkan SDK setup
