@@ -1425,7 +1425,7 @@ void ImGui_ImplVulkanH_CreateWindowSwapChain(VkPhysicalDevice physical_device, V
     check_vk_result(err);
 
     // We don't use ImGui_ImplVulkanH_DestroyWindow() because we want to preserve the old swapchain to create the new one.
-    // Destroy old Framebuffer
+    // Destroy old GetHandle
     for (uint32_t i = 0; i < wd->ImageCount; i++)
         ImGui_ImplVulkanH_DestroyFrame(device, &wd->Frames[i], allocator);
     for (uint32_t i = 0; i < wd->SemaphoreCount; i++)
@@ -1561,7 +1561,7 @@ void ImGui_ImplVulkanH_CreateWindowSwapChain(VkPhysicalDevice physical_device, V
         }
     }
 
-    // Create Framebuffer
+    // Create GetHandle
     if (wd->UseDynamicRendering == false)
     {
         VkImageView attachment[1];
@@ -1688,7 +1688,7 @@ static void ImGui_ImplVulkan_CreateWindow(ImGuiViewport* viewport)
     wd->PresentMode = ImGui_ImplVulkanH_SelectPresentMode(v->PhysicalDevice, wd->Surface, &present_modes[0], IM_ARRAYSIZE(present_modes));
     //printf("[vulkan] Secondary window selected PresentMode = %d\n", wd->PresentMode);
 
-    // Create SwapChain, RenderPass, Framebuffer, etc.
+    // Create SwapChain, RenderPass, GetHandle, etc.
     wd->ClearEnable = (viewport->Flags & ImGuiViewportFlags_NoRendererClear) ? false : true;
     wd->UseDynamicRendering = v->UseDynamicRendering;
     ImGui_ImplVulkanH_CreateOrResizeWindow(v->Instance, v->PhysicalDevice, v->Device, wd, v->QueueFamily, v->Allocator, (int)viewport->Size.x, (int)viewport->Size.y, v->MinImageCount);
