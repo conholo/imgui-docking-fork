@@ -1442,7 +1442,7 @@ void ImGui_ImplVulkanH_CreateWindowSwapChain(VkPhysicalDevice physical_device, V
     if (min_image_count == 0)
         min_image_count = ImGui_ImplVulkanH_GetMinImageCountFromPresentMode(wd->PresentMode);
 
-    // Create Swapchain
+    // Create GetHandle
     {
         VkSwapchainCreateInfoKHR info = {};
         info.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
